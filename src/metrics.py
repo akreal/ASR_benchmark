@@ -1,8 +1,9 @@
 import numpy
 import string
+import num2words
 
 
-def normalize_text(text, lower_case=False, remove_punctuation=False, write_numbers_in_letters=True):
+def normalize_text(text, lower_case=False, remove_punctuation=False, write_numbers_in_letters=True, language='en-US'):
     '''
     Perform text normalization
     '''
@@ -13,16 +14,16 @@ def normalize_text(text, lower_case=False, remove_punctuation=False, write_numbe
     if remove_punctuation: text = text.translate(table)
 
     if write_numbers_in_letters:
-        text = text.replace('0',' zero ')
-        text = text.replace('1',' one ')
-        text = text.replace('2',' two ')
-        text = text.replace('3',' three ')
-        text = text.replace('4',' four ')
-        text = text.replace('5',' five ')
-        text = text.replace('6',' six ')
-        text = text.replace('7',' seven ')
-        text = text.replace('8',' eight ')
-        text = text.replace('9',' nine ')
+        text = text.replace('0',' ' + num2words.num2words(0, lang=language) + ' ')
+        text = text.replace('1',' ' + num2words.num2words(1, lang=language) + ' ')
+        text = text.replace('2',' ' + num2words.num2words(2, lang=language) + ' ')
+        text = text.replace('3',' ' + num2words.num2words(3, lang=language) + ' ')
+        text = text.replace('4',' ' + num2words.num2words(4, lang=language) + ' ')
+        text = text.replace('5',' ' + num2words.num2words(5, lang=language) + ' ')
+        text = text.replace('6',' ' + num2words.num2words(6, lang=language) + ' ')
+        text = text.replace('7',' ' + num2words.num2words(7, lang=language) + ' ')
+        text = text.replace('8',' ' + num2words.num2words(8, lang=language) + ' ')
+        text = text.replace('9',' ' + num2words.num2words(9, lang=language) + ' ')
         # https://stackoverflow.com/questions/1546226/simple-way-to-remove-multiple-spaces-in-a-string
         text = ' '.join(text.split())
     return text
